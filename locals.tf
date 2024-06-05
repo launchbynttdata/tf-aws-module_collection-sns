@@ -17,7 +17,7 @@ locals {
   }
 
   subscriptions = {
-    for index, sub in var.subscriptions : "${index}" => {
+    for index, sub in var.subscriptions : index => {
       protocol = sub.protocol
       endpoint = sub.endpoint
     }
