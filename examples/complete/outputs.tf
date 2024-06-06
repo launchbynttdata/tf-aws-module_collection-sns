@@ -39,3 +39,8 @@ output "queue_arn" {
   description = "The ARN of the SQS queue"
   value       = module.sqs_mock_recipient.queue_arn
 }
+
+output "queue_url" {
+  description = "The URL of the SQS queue"
+  value       = module.sqs_mock_recipient.queue_url
+}

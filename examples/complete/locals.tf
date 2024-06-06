@@ -1,3 +1,3 @@
 locals {
-  sqs_name = "${var.naming_prefix}-sqs-${random_integer.priority.result}"
+  sqs_name = "${var.logical_product_family}-${var.logical_product_service}-sqs-${random_integer.priority.result}"
 }

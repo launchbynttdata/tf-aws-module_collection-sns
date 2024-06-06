@@ -12,6 +12,7 @@ subscriptions = [
 tags = {
   "provisioner" : "Terraform"
 }
-naming_prefix = "demo-app"
-delay_seconds = 0
-fifo_queue    = false
+delay_seconds           = 0
+fifo_queue              = false
+logical_product_family  = "terratest"
+logical_product_service = "snsmodule"

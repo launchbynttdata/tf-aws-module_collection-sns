@@ -19,8 +19,10 @@ resource "random_integer" "priority" {
 module "sns" {
   source = "../.."
 
-  subscriptions = concat(var.subscriptions, [{ "protocol" = "sqs", "endpoint" = module.sqs_mock_recipient.queue_arn }])
-  tags          = var.tags
+  subscriptions           = concat(var.subscriptions, [{ "protocol" = "sqs", "endpoint" = module.sqs_mock_recipient.queue_arn }])
+  logical_product_family  = var.logical_product_family
+  logical_product_service = var.logical_product_service
+  tags                    = var.tags
 }
 module "sqs_mock_recipient" {
   source  = "terraform-aws-modules/sqs/aws"
