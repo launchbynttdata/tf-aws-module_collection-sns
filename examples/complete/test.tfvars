@@ -12,10 +12,7 @@ subscriptions = [
 tags = {
   "provisioner" : "Terraform"
 }
-resource_number    = "000"
-region             = "us-east-2"
-environment        = "dev"
-environment_number = "000"
-naming_prefix      = "demo-app"
-delay_seconds      = 0
-fifo_queue         = false
+delay_seconds           = 0
+fifo_queue              = false
+logical_product_family  = "terratest"
+logical_product_service = "snsmodule"

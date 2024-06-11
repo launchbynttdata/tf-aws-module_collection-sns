@@ -10,18 +10,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-variable "create" {
-  description = "Determines whether resources will be created (affects all resources)"
-  type        = bool
-  default     = true
-}
-
-variable "name" {
-  description = "The name of the SNS topic to create"
-  type        = string
-  default     = null
-}
-
 variable "use_name_prefix" {
   description = "Determines whether `name` is used as a prefix"
   type        = bool
@@ -223,12 +211,6 @@ variable "logical_product_service" {
   default = "servicename"
 }
 
-variable "naming_prefix" {
-  description = "Prefix for the provisioned resources."
-  type        = string
-  default     = "platform"
-}
-
 variable "environment" {
   description = "Environment in which the resource should be provisioned like dev, qa, prod etc."
   type        = string
@@ -237,16 +219,19 @@ variable "environment" {
 
 variable "environment_number" {
   description = "The environment count for the respective environment. Defaults to 000. Increments in value of 1"
+  type        = string
   default     = "000"
 }
 
 variable "region" {
   description = "AWS Region in which the infra needs to be provisioned"
+  type        = string
   default     = "us-east-2"
 }
 
 variable "resource_number" {
   description = "The resource count for the respective resource. Defaults to 000. Increments in value of 1"
+  type        = string
   default     = "000"
 }
 

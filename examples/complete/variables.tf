@@ -17,41 +17,36 @@ variable "subscriptions" {
 }
 
 ### TF Module Resource variables
-variable "naming_prefix" {
-  description = "Prefix for the provisioned resources."
+variable "logical_product_family" {
   type        = string
-  default     = "platform"
-}
+  description = <<EOF
+    (Required) Name of the product family for which the resource is created.
+    Example: org_name, department_name.
+  EOF
+  nullable    = false
 
-variable "environment" {
-  description = "Environment in which the resource should be provisioned like dev, qa, prod etc."
-  type        = string
-  default     = "dev"
-}
-
-variable "environment_number" {
-  description = "The environment count for the respective environment. Defaults to 000. Increments in value of 1"
-  default     = "000"
-}
-
-variable "region" {
-  description = "AWS Region in which the infra needs to be provisioned"
-  default     = "us-east-2"
-}
-
-variable "resource_number" {
-  description = "The resource count for the respective resource. Defaults to 000. Increments in value of 1"
-  default     = "000"
-}
-
-variable "resource_names_map" {
-  description = "A map of key to resource_name that will be used by cloudposse/label/null module to generate resource names"
-  type        = map(string)
-  default = {
-    codebuild  = "cb",
-    iam_role   = "iamr",
-    iam_policy = "iamp"
+  validation {
+    condition     = can(regex("^[_\\-A-Za-z0-9]+$", var.logical_product_family))
+    error_message = "The variable must contain letters, numbers, -, _, and .."
   }
+
+  default = "launch"
+}
+
+variable "logical_product_service" {
+  type        = string
+  description = <<EOF
+    (Required) Name of the product service for which the resource is created.
+    For example, backend, frontend, middleware etc.
+  EOF
+  nullable    = false
+
+  validation {
+    condition     = can(regex("^[_\\-A-Za-z0-9]+$", var.logical_product_service))
+    error_message = "The variable must contain letters, numbers, -, _, and .."
+  }
+
+  default = "servicename"
 }
 
 variable "tags" {
