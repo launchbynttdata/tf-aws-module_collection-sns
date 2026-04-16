@@ -11,9 +11,9 @@
 // limitations under the License.
 
 variable "subscriptions" {
-  description = "A map of subscription definitions to create"
-  type        = any
-  default     = {}
+  description = "A list of subscription definitions to create"
+  type        = list(any)
+  default     = []
 }
 
 ### TF Module Resource variables
